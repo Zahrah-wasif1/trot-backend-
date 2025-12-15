@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Car, { ICar } from '../models/Car';
+import Car from '../models/Car';
 import { AuthRequest } from '../middleware/auth';
 import mongoose from 'mongoose';
 
