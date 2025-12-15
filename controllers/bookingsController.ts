@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import Booking, { IBooking } from '../models/Booking';
-import { AuthRequest } from '../middleware/auth.js';
+import Booking, { IBooking } from '../models/Booking.ts';
+import { AuthRequest } from '../middleware/auth.ts';
 import mongoose from 'mongoose';
 
 // Create a new booking

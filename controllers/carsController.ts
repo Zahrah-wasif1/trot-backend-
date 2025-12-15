@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import Car from '../models/Car';
-import { AuthRequest } from '../middleware/auth.js';
+import Car from '../models/Car.ts';
+import { AuthRequest } from '../middleware/auth.ts';
 import mongoose from 'mongoose';
 
 // Create a new car (admin only)
