@@ -28,4 +28,4 @@ export const connectDB = async () => {
 };
 connectDB().then(() => console.log('MongoDB connected')).catch(console.error);
 
-export default app; // export the app for serverless
+export default app; 
