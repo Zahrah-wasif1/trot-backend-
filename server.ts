@@ -2,9 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import userRoutes from './routes/userRoutes.ts';
-import carRoutes from './routes/carRoutes.ts';
-import bookingRoutes from './routes/bookingRoutes.ts';
+import userRoutes from './routes/userRoutes.js';
+import carRoutes from './routes/carRoutes.js';
+import bookingRoutes from './routes/bookingRoutes.js';
 
 dotenv.config();
 
@@ -26,6 +26,14 @@ export const connectDB = async () => {
   await mongoose.connect(process.env.MONGO_URI!);
   isConnected = true;
 };
-connectDB().then(() => console.log('MongoDB connected')).catch(console.error);
+connectDB()
+  .then(() => console.log('MongoDB connected'))
+  .catch(console.error);
 
-export default app; 
+// Start server (if running locally, not serverless)
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+
