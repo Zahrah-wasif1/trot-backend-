@@ -2,9 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import userRoutes from './routes/userRoutes';
-import carRoutes from './routes/carRoutes';
-import bookingRoutes from './routes/bookingRoutes';
+import userRoutes from './routes/userRoutes.ts';
+import carRoutes from './routes/carRoutes.ts';
+import bookingRoutes from './routes/bookingRoutes.ts';
 
 dotenv.config();
 
