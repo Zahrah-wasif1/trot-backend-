@@ -1,7 +1,6 @@
-import serverless from 'serverless-http';
-import app, { connectDB } from '../server';
 
-// Make sure DB is connected
-connectDB();
+import app from "../server.js";
 
-export default serverless(app);
+
+export default app;
+

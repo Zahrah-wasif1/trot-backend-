@@ -1,9 +1,8 @@
 import { Router } from 'express';
-import { registerUser, loginUser } from '../controllers/authController.ts';
+import { registerUser, loginUser } from '../controllers/authController';
 
 const router = Router();
 
-// Public routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 

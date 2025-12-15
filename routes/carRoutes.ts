@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { auth } from '../middleware/auth.ts';
+import { auth } from '../middleware/auth';
 import {
   createCar,
   getCars,
