@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db';
-import userRoutes from './routes/userRoutes';
+import authRoutes from './routes/authRoutes';
 import carRoutes from './routes/carRoutes';
 import bookingRoutes from './routes/bookingRoutes';
 import contactRoutes from './routes/contactRoutes';
@@ -21,7 +21,7 @@ app.use(
 app.use(express.json());
 
 // Routes
-app.use('/api/users', userRoutes);
+app.use('/api/users', authRoutes);
 app.use('/api/cars', carRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/contact', contactRoutes);
