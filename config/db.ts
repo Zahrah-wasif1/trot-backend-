@@ -1,9 +1,5 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 
-<<<<<<< HEAD
-dotenv.config();
-=======
 interface MongooseCache {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
@@ -40,16 +36,15 @@ async function connectDB(): Promise<typeof mongoose> {
       return mongooseInstance;
     });
   }
->>>>>>> origin/zahrah_dev
 
-const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI || '');
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`Error: ${error}`);
-    process.exit(1);
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
   }
-};
+
+  return cached.conn;
+}
 
 export default connectDB;

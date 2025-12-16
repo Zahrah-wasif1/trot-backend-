@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { auth } from '../middleware/auth';
+import { auth } from '../middleware/auth.js';
 import {
   createCar,
   getCars,
   getCarById,
   updateCar,
   deleteCar,
-} from '../controllers/carsController';
+} from '../controllers/carsController.js';
 
 const router = Router();
 

@@ -5,8 +5,8 @@ import {
   getBookingById,
   updateBookingStatus,
   deleteBooking,
-} from "../controllers/bookingsController";
-import { auth } from "../middleware/auth";
+} from "../controllers/bookingsController.js";
+import { auth } from "../middleware/auth.js";
 
 const router = Router();
 

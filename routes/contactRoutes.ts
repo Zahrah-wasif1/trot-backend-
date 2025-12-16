@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { submitContact, getContacts, getContactById } from '../controllers/contactController';
-import { auth } from '../middleware/auth';
+import { submitContact, getContacts, getContactById } from '../controllers/contactController.js';
+import { auth } from '../middleware/auth.js';
 
 const router = Router();
 

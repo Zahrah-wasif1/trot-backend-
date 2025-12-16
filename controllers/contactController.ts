@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Contact, { IContact } from '../models/Contact';
+import Contact, { IContact } from '../models/Contact.js';
 
 // Submit contact form
 export const submitContact = async (req: Request, res: Response) => {

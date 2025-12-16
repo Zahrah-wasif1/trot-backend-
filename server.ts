@@ -1,11 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import connectDB from './config/db';
-import authRoutes from './routes/authRoutes';
-import carRoutes from './routes/carRoutes';
-import bookingRoutes from './routes/bookingRoutes';
-import contactRoutes from './routes/contactRoutes';
+import connectDB from './config/db.js';
+import authRoutes from './routes/authRoutes.js';
+import carRoutes from './routes/carRoutes.js';
+import bookingRoutes from './routes/bookingRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 dotenv.config();
 
