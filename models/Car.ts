@@ -57,5 +57,11 @@ const CarSchema: Schema = new Schema(
   }
 );
 
-export default mongoose.models.Car || mongoose.model<ICar>('Car', CarSchema);
+let Car: mongoose.Model<ICar>;
+if (mongoose.models.Car) {
+  Car = mongoose.models.Car as mongoose.Model<ICar>;
+} else {
+  Car = mongoose.model<ICar>('Car', CarSchema);
+}
+export default Car;
 

@@ -55,5 +55,11 @@ const BookingSchema: Schema = new Schema(
   }
 );
 
-export default mongoose.models.Booking || mongoose.model<IBooking>('Booking', BookingSchema);
+let Booking: mongoose.Model<IBooking>;
+if (mongoose.models.Booking) {
+  Booking = mongoose.models.Booking as mongoose.Model<IBooking>;
+} else {
+  Booking = mongoose.model<IBooking>('Booking', BookingSchema);
+}
+export default Booking;
 

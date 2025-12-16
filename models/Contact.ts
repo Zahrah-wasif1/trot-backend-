@@ -48,5 +48,11 @@ const ContactSchema: Schema = new Schema(
   }
 );
 
-export default mongoose.models.Contact || mongoose.model<IContact>('Contact', ContactSchema);
+let Contact: mongoose.Model<IContact>;
+if (mongoose.models.Contact) {
+  Contact = mongoose.models.Contact as mongoose.Model<IContact>;
+} else {
+  Contact = mongoose.model<IContact>('Contact', ContactSchema);
+}
+export default Contact;
 
