@@ -1,10 +1,11 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import connectDB from './config/db';
 import userRoutes from './routes/userRoutes';
 import carRoutes from './routes/carRoutes';
 import bookingRoutes from './routes/bookingRoutes';
+import contactRoutes from './routes/contactRoutes';
 
 dotenv.config();
 
@@ -18,14 +19,21 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/cars', carRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/contact', contactRoutes);
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Server is running' });
+});
 
 // MongoDB connection
-let isConnected = false;
-export const connectDB = async () => {
-  if (isConnected) return;
-  await mongoose.connect(process.env.MONGO_URI!);
-  isConnected = true;
+export const initializeDB = async () => {
+  try {
+    await connectDB();
+    console.log('MongoDB connected');
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+  }
 };
-connectDB().then(() => console.log('MongoDB connected')).catch(console.error);
 
 export default app; // export the app for serverless
