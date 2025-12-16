@@ -1,9 +1,7 @@
 const serverless = require('serverless-http');
-const { default: app, initializeDB } = require('../server.js');
+const { default: app,connectDB} = require('../server.js');
 
 // Initialize MongoDB connection
-initializeDB().catch((err) => {
-  console.error('Error initializing DB:', err);
-});
+connectDB();
 
 module.exports = serverless(app);
