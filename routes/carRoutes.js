@@ -1,23 +1,18 @@
-const express = require('express');
-const auth = require('../middleware/auth.js');
-const adminOnly = require('../middleware/admin.js');
-const {
-  createCar,
-  getCars,
-  getCarById,
-  updateCar,
-  deleteCar,
-} = require('../controllers/carsController.js');
-
+const express = require("express");
 const router = express.Router();
 
-// Public routes
-router.get('/', getCars);
-router.get('/:id', getCarById);
+const {
+  getCars,
+  getCarById,
+  createCar,
+  updateCar,
+  deleteCar,
+} = require("../controllers/carController");
 
-// Protected routes (admin only)
-router.post('/', auth, adminOnly, createCar);
-router.put('/:id', auth, adminOnly, updateCar);
-router.delete('/:id', auth, adminOnly, deleteCar);
+router.get("/", getCars);
+router.get("/:id", getCarById);
+router.post("/", createCar);
+router.put("/:id", updateCar);
+router.delete("/:id", deleteCar);
 
 module.exports = router;
