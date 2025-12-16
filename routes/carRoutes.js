@@ -1,6 +1,6 @@
 const express = require('express');
 const auth = require('../middleware/auth.js');
-const adminOnly = require('../middleware/adminOnly.js');
+const adminOnly = require('../middleware/admin.js');
 const {
   createCar,
   getCars,
