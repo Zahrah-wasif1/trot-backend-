@@ -57,8 +57,7 @@ const CarSchema: Schema = new Schema(
   }
 );
 
-const Car = mongoose.models.Car 
-  ? (mongoose.models.Car as unknown as mongoose.Model<ICar>)
-  : mongoose.model<ICar>('Car', CarSchema);
+// mongoose.model() returns existing model if already compiled, or creates new one
+const Car = mongoose.model<ICar>('Car', CarSchema);
 export default Car;
 

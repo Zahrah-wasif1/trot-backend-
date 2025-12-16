@@ -48,8 +48,7 @@ const ContactSchema: Schema = new Schema(
   }
 );
 
-const Contact = mongoose.models.Contact 
-  ? (mongoose.models.Contact as unknown as mongoose.Model<IContact>)
-  : mongoose.model<IContact>('Contact', ContactSchema);
+// mongoose.model() returns existing model if already compiled, or creates new one
+const Contact = mongoose.model<IContact>('Contact', ContactSchema);
 export default Contact;
 
