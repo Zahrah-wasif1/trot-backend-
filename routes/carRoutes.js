@@ -7,7 +7,7 @@ const {
   createCar,
   updateCar,
   deleteCar,
-} = require("../controllers/carController");
+} = require("../controllers/carsController");
 
 router.get("/", getCars);
 router.get("/:id", getCarById);
