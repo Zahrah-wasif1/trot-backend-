@@ -13,8 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "types": ["node"],
-    "noImplicitAny": false,
-    "allowImportingTsExtensions": false
+    "noImplicitAny": false
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]
