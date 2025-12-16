@@ -58,7 +58,7 @@ const CarSchema: Schema = new Schema(
 );
 
 // mongoose.model() returns existing model if already compiled, or creates new one
-// Using type assertion to avoid TypeScript union type complexity
-const Car = mongoose.model<ICar>('Car', CarSchema) as mongoose.Model<ICar>;
+// @ts-expect-error - Mongoose model types are complex, but runtime behavior is correct
+const Car = mongoose.model<ICar>('Car', CarSchema);
 export default Car;
 

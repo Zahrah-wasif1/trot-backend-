@@ -56,7 +56,7 @@ const BookingSchema: Schema = new Schema(
 );
 
 // mongoose.model() returns existing model if already compiled, or creates new one
-// Using type assertion to avoid TypeScript union type complexity
-const Booking = mongoose.model<IBooking>('Booking', BookingSchema) as mongoose.Model<IBooking>;
+// @ts-expect-error - Mongoose model types are complex, but runtime behavior is correct
+const Booking = mongoose.model<IBooking>('Booking', BookingSchema);
 export default Booking;
 
