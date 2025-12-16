@@ -49,7 +49,7 @@ const ContactSchema: Schema = new Schema(
 );
 
 // mongoose.model() returns existing model if already compiled, or creates new one
-// @ts-expect-error - Mongoose model types are complex, but runtime behavior is correct
+// @ts-ignore - Mongoose model types are complex, but runtime behavior is correct
 const Contact = mongoose.model<IContact>('Contact', ContactSchema);
 export default Contact;
 
