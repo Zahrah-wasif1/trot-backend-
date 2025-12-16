@@ -48,11 +48,8 @@ const ContactSchema: Schema = new Schema(
   }
 );
 
-let Contact: mongoose.Model<IContact>;
-if (mongoose.models.Contact) {
-  Contact = mongoose.models.Contact as mongoose.Model<IContact>;
-} else {
-  Contact = mongoose.model<IContact>('Contact', ContactSchema);
-}
+const Contact = mongoose.models.Contact 
+  ? (mongoose.models.Contact as unknown as mongoose.Model<IContact>)
+  : mongoose.model<IContact>('Contact', ContactSchema);
 export default Contact;
 

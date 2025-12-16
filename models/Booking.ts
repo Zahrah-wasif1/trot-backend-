@@ -55,11 +55,8 @@ const BookingSchema: Schema = new Schema(
   }
 );
 
-let Booking: mongoose.Model<IBooking>;
-if (mongoose.models.Booking) {
-  Booking = mongoose.models.Booking as mongoose.Model<IBooking>;
-} else {
-  Booking = mongoose.model<IBooking>('Booking', BookingSchema);
-}
+const Booking = mongoose.models.Booking 
+  ? (mongoose.models.Booking as unknown as mongoose.Model<IBooking>)
+  : mongoose.model<IBooking>('Booking', BookingSchema);
 export default Booking;
 

@@ -50,11 +50,8 @@ const UserSchema: Schema = new Schema(
   }
 );
 
-let User: mongoose.Model<IUser>;
-if (mongoose.models.User) {
-  User = mongoose.models.User as mongoose.Model<IUser>;
-} else {
-  User = mongoose.model<IUser>('User', UserSchema);
-}
+const User = mongoose.models.User 
+  ? (mongoose.models.User as unknown as mongoose.Model<IUser>)
+  : mongoose.model<IUser>('User', UserSchema);
 export default User;
 
