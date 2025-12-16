@@ -49,6 +49,7 @@ const ContactSchema: Schema = new Schema(
 );
 
 // mongoose.model() returns existing model if already compiled, or creates new one
-const Contact = mongoose.model<IContact>('Contact', ContactSchema);
+// Using type assertion to avoid TypeScript union type complexity
+const Contact = mongoose.model<IContact>('Contact', ContactSchema) as mongoose.Model<IContact>;
 export default Contact;
 

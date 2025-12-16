@@ -51,6 +51,7 @@ const UserSchema: Schema = new Schema(
 );
 
 // mongoose.model() returns existing model if already compiled, or creates new one
-const User = mongoose.model<IUser>('User', UserSchema);
+// Using type assertion to avoid TypeScript union type complexity
+const User = mongoose.model<IUser>('User', UserSchema) as mongoose.Model<IUser>;
 export default User;
 
