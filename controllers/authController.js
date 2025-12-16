@@ -1,10 +1,9 @@
-import { Request, Response } from 'express';
-import User from '../models/User.js';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+const User = require('../models/User.js');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // Register user
-export const registerUser = async (req: Request, res: Response) => {
+const registerUser = async (req, res) => {
   try {
     const { name, email, password, phone } = req.body;
 
@@ -27,7 +26,7 @@ export const registerUser = async (req: Request, res: Response) => {
 };
 
 // Login user
-export const loginUser = async (req: Request, res: Response) => {
+const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -54,4 +53,9 @@ export const loginUser = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
   }
+};
+
+module.exports = {
+  registerUser,
+  loginUser,
 };

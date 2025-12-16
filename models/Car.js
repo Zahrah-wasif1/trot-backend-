@@ -1,19 +1,7 @@
-import mongoose, { Document, Schema } from 'mongoose';
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-export interface ICar extends Document {
-  name: string;
-  type: string;
-  seats: number;
-  price: number;
-  image: string;
-  description?: string;
-  features?: string[];
-  available: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-const CarSchema: Schema = new Schema(
+const CarSchema = new Schema(
   {
     name: {
       type: String,
@@ -57,8 +45,4 @@ const CarSchema: Schema = new Schema(
   }
 );
 
-// mongoose.model() returns existing model if already compiled, or creates new one
-// @ts-ignore - Mongoose model types are complex, but runtime behavior is correct
-const Car = mongoose.model<ICar>('Car', CarSchema);
-export default Car;
-
+module.exports = mongoose.model('Car', CarSchema);

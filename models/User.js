@@ -1,17 +1,7 @@
-import mongoose, { Document, Schema } from 'mongoose';
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-export interface IUser extends Document {
-  name: string;
-  email: string;
-  phone?: string;
-  password: string;
-  role: 'admin' | 'customer';
-  status: 'active' | 'inactive';
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-const UserSchema: Schema = new Schema(
+const UserSchema = new Schema(
   {
     name: {
       type: String,
@@ -50,8 +40,4 @@ const UserSchema: Schema = new Schema(
   }
 );
 
-// mongoose.model() returns existing model if already compiled, or creates new one
-// @ts-ignore - Mongoose model types are complex, but runtime behavior is correct
-const User = mongoose.model<IUser>('User', UserSchema);
-export default User;
-
+module.exports = mongoose.model('User', UserSchema);

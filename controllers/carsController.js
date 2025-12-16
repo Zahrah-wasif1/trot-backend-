@@ -1,12 +1,9 @@
-import { Request, Response } from 'express';
-import Car from '../models/Car.js';
-import { AuthRequest } from '../middleware/auth.js';
-import mongoose from 'mongoose';
+const Car = require('../models/Car.js');
 
 // Create a new car (admin only)
-export const createCar = async (req: AuthRequest, res: Response) => {
+const createCar = async (req, res) => {
   try {
-    if (req.user?.role !== 'admin') {
+    if (!req.user || req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Only admins can add cars' });
     }
 
@@ -20,7 +17,7 @@ export const createCar = async (req: AuthRequest, res: Response) => {
 };
 
 // Get all cars
-export const getCars = async (req: Request, res: Response) => {
+const getCars = async (req, res) => {
   try {
     const cars = await Car.find();
     res.json(cars);
@@ -30,7 +27,7 @@ export const getCars = async (req: Request, res: Response) => {
 };
 
 // Get single car by ID
-export const getCarById = async (req: Request, res: Response) => {
+const getCarById = async (req, res) => {
   try {
     const car = await Car.findById(req.params.id);
     if (!car) return res.status(404).json({ message: 'Car not found' });
@@ -41,9 +38,9 @@ export const getCarById = async (req: Request, res: Response) => {
 };
 
 // Update car (admin only)
-export const updateCar = async (req: AuthRequest, res: Response) => {
+const updateCar = async (req, res) => {
   try {
-    if (req.user?.role !== 'admin') {
+    if (!req.user || req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Only admins can update cars' });
     }
 
@@ -60,9 +57,9 @@ export const updateCar = async (req: AuthRequest, res: Response) => {
 };
 
 // Delete car (admin only)
-export const deleteCar = async (req: AuthRequest, res: Response) => {
+const deleteCar = async (req, res) => {
   try {
-    if (req.user?.role !== 'admin') {
+    if (!req.user || req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Only admins can delete cars' });
     }
 
@@ -74,4 +71,12 @@ export const deleteCar = async (req: AuthRequest, res: Response) => {
   } catch (error) {
     res.status(500).json({ message: 'Server Error', error });
   }
+};
+
+module.exports = {
+  createCar,
+  getCars,
+  getCarById,
+  updateCar,
+  deleteCar,
 };

@@ -1,27 +1,14 @@
-import mongoose, { Document, Schema } from 'mongoose';
+const mongoose = require('mongoose');
 
-export interface IBooking extends Document {
-  userId: mongoose.Types.ObjectId;
-  carId: mongoose.Types.ObjectId;
-  startDate: Date;
-  endDate: Date;
-  status: 'pending' | 'active' | 'completed' | 'cancelled';
-  amount: number;
-  phone?: string;
-  email?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-const BookingSchema: Schema = new Schema(
+const BookingSchema = new mongoose.Schema(
   {
     userId: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
     carId: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Car',
       required: true,
     },
@@ -56,7 +43,6 @@ const BookingSchema: Schema = new Schema(
 );
 
 // mongoose.model() returns existing model if already compiled, or creates new one
-// @ts-ignore - Mongoose model types are complex, but runtime behavior is correct
-const Booking = mongoose.model<IBooking>('Booking', BookingSchema);
-export default Booking;
+const Booking = mongoose.model('Booking', BookingSchema);
 
+module.exports = Booking;

@@ -15,7 +15,7 @@
     "types": ["node"],
     "noImplicitAny": false
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "api/server.js", "config/db.js", "controllers/authController.js", "controllers/bookingsController.js", "controllers/carsController.js", "controllers/contactController.js", "middleware/admin.js", "middleware/auth.js", "models/Booking.js", "models/Car.js", "models/Contact.js", "models/User.js", "routes/authRoutes.js", "routes/bookingRoutes.js", "routes/carRoutes.js", "routes/contactRoutes.js", "server.js"],
   "exclude": ["node_modules"]
 }
 

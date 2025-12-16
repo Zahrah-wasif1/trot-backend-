@@ -1,11 +1,11 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import connectDB from './config/db.js';
-import authRoutes from './routes/authRoutes.js';
-import carRoutes from './routes/carRoutes.js';
-import bookingRoutes from './routes/bookingRoutes.js';
-import contactRoutes from './routes/contactRoutes.js';
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const connectDB = require('./config/db.js');
+const authRoutes = require('./routes/authRoutes.js');
+const carRoutes = require('./routes/carRoutes.js');
+const bookingRoutes = require('./routes/bookingRoutes.js');
+const contactRoutes = require('./routes/contactRoutes.js');
 
 dotenv.config();
 
@@ -37,7 +37,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // MongoDB connection
-export const initializeDB = async () => {
+const initializeDB = async () => {
   try {
     await connectDB();
     console.log('MongoDB connected');
@@ -52,4 +52,4 @@ if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
 
-export default app;
+module.exports = { default: app, initializeDB };

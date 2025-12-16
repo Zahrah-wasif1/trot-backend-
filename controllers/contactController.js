@@ -1,8 +1,7 @@
-import { Request, Response } from 'express';
-import Contact, { IContact } from '../models/Contact.js';
+const Contact = require('../models/Contact.js');
 
 // Submit contact form
-export const submitContact = async (req: Request, res: Response) => {
+const submitContact = async (req, res) => {
   try {
     const { name, email, phone, subject, message } = req.body;
 
@@ -41,8 +40,8 @@ export const submitContact = async (req: Request, res: Response) => {
   }
 };
 
-// Get all contact submissions (admin only - optional for future use)
-export const getContacts = async (req: Request, res: Response) => {
+// Get all contact submissions (admin only - optional)
+const getContacts = async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });
     res.json(contacts);
@@ -51,8 +50,8 @@ export const getContacts = async (req: Request, res: Response) => {
   }
 };
 
-// Get single contact by ID (admin only - optional for future use)
-export const getContactById = async (req: Request, res: Response) => {
+// Get single contact by ID (admin only - optional)
+const getContactById = async (req, res) => {
   try {
     const contact = await Contact.findById(req.params.id);
     if (!contact) return res.status(404).json({ message: 'Contact not found' });
@@ -62,3 +61,8 @@ export const getContactById = async (req: Request, res: Response) => {
   }
 };
 
+module.exports = {
+  submitContact,
+  getContacts,
+  getContactById,
+};
